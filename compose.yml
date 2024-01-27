@@ -1,0 +1,39 @@
+services:
+
+  serveur:
+    image: serveur:0.1
+    build:       
+      context: .
+      dockerfile: ./dockerfile_srv
+    networks:
+      mynetwork:
+        ipv4_address: 172.22.0.2
+    ports:
+      - "5000:5000"
+    expose:
+      - "5000"
+
+  api:
+    image: api:0.1
+    build: 
+      context: .
+      dockerfile: ./dockerfile_api
+    networks:
+      mynetwork:
+        ipv4_address: 172.22.0.3
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./bdd:/app/bdd
+    expose:
+      - "5000"
+
+networks:
+  mynetwork:
+    ipam:
+      config:
+        - subnet: 172.22.0.0/16
+          gateway: 172.22.0.1
+
+  
+

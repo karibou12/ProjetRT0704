@@ -1,0 +1,11 @@
+# exclusion API
+api/.git
+api/__pycache__
+api/README.md
+
+
+
+# Explusrion SRV
+serveur/.git
+serveur/__pycache__
+serveur/README.md
