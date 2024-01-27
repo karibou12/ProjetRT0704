@@ -1,3 +1,6 @@
 __pycache__/
+*__pycache__
+*.pic
+!**/__pycache__/
 
 
