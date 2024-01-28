@@ -108,8 +108,7 @@ def create_user():
         for i in emaildb:
             if email in i[0]:
                 email = 'emailUsed'
-                breahea
-            
+                          
         if userdb != username and email != 'emailUsed':
             cursor.execute('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', (username, email, generate_password_hash(password)),)
             conn.commit()
