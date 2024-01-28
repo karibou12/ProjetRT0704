@@ -1,15 +1,12 @@
 
-# API videotheque
+# API videotheque endpoint
 
   
 
-## endpoint
 
-  
+************* USERS ENDPOINT *************
 
-********* USERS ENDPOINT *************
-
-# CREATE user
+## CREATE user
 
 http://172.22.0.3:5000/adduser
 
@@ -18,7 +15,7 @@ ex:
     curl -d '{"username":"tonton","email":"tonton@test.fr", "password":"toto"}' -H "Content-Type: application/json" -X POST http://172.22.0.3:5000/adduser
   
 
-# READ all users
+## READ all users
 
 http://172.22.0.3:5000/users
 
@@ -27,7 +24,7 @@ ex:
     curl http://172.22.0.3:5000/users
   
 
-# READ specific user
+## READ specific user
 
 http://172.22.0.3:5000/user/<user_id>
 ex:
@@ -35,73 +32,73 @@ ex:
     curl http://172.22.0.3:5000/user/gui
 
 
-# UPDATE a specific user
+## UPDATE a specific user
 
 http://172.22.0.3:5000/user/<user_id
   
 
-# DELETE a specifique user
+## DELETE a specifique user
 
 http://172.22.0.3:5000/user/<user_id
 
   
 
-#*************************FILMS************************************
+************* FILMS ENDPOINT *************
   
 
 
 POur ajouter un film il faut chercher son id (SEARCH endpoint) dans la bdd de the Movie Database de la manière suivante
 vous allez utiliser cette id pour ensuite l'ajouter avec l'endpoint add film (CREATE film)
 
-# SEARCH a film
+## SEARCH a film
 http://172.22.0.3:5000/search
 
 ex:
 curl -d '{"titre":"forest gump"}' -H "Content-Type: application/json" -X POST http://172.22.0.3:5000/search
 
 
-# CREATE film
+## CREATE film
 http://172.22.0.3:5000/addfilm
 
 ex:
 curl -d '{"id":"13"}' -H "Content-Type: application/json" -X POST http://172.22.0.3:5000/addfilm
   
 
-# READ films
+## READ films
 http://172.22.0.3:5000/films
   
 
-# READ specific film
+## READ specific film
 http://172.22.0.3:5000/film/<int:film_id>
  
 
-# UPDATE a specific film
+## UPDATE a specific film
 http://172.22.0.3:5000/film/<int:film_id>
   
 
 
-# DELETE a specific film
+## DELETE a specific film
 http://172.22.0.3:5000/film/<int:film_id>
   
 ex:
 curl -X DELETE http://172.22.0.3:5000/film/26
   
 
-#************************* USER FILMS ******************************************
+
+************* USER FILMS ENDPOINT ************* 
 
   
-
-# GET userfilms
+## GET userfilms
 http://172.22.0.3:5000/film/<user_id>/films
  
 
-# GET userfilm
+## GET userfilm
 http://172.22.0.3:5000/film/<user_id>/film/<int:film_id>
  
 
-# Add user film
+## Add user film
 http://172.22.0.3:5000/<user_id>/addfilm
   
 
-# DELETE userfilm
+## DELETE userfilm
 http://172.22.0.3:5000/<user_id>/film/<int:film_id>
