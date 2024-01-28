@@ -9,6 +9,13 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
 
 
+
+
+#### replace credential here
+tmdbCredential = {}
+####
+
+
 # Fgenerate a token JWT
 def generate_token(user_id):
     payload = {
@@ -101,7 +108,7 @@ def create_user():
         for i in emaildb:
             if email in i[0]:
                 email = 'emailUsed'
-                break
+                breahea
             
         if userdb != username and email != 'emailUsed':
             cursor.execute('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', (username, email, generate_password_hash(password)),)
@@ -184,10 +191,8 @@ def create_film():
     if request.method == 'POST':
         data = request.get_json()
         id = data['id']
-        headers = {
-            "accept": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmM2I1NGViM2Q0ZTQyODVkZGUxODFmNGVjMzNjM2RmMyIsInN1YiI6IjY1OTAxMDc0NjRmNzE2NjVkNjhlYThiZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DGoyIxj4tfOLEbFjyFNZIUoKSLMPdNJGzyV4FpJtIGY"
-        }
+
+        headers = tmdbCredential
 
         url = "https://api.themoviedb.org/3/movie/" + id +"?language=fr-FR"
         response = requests.get(url, headers=headers)
@@ -253,10 +258,7 @@ def search_film():
 
         url = f'https://api.themoviedb.org/3/search/movie?query={titre}&include_adult=false&language=fr-FR&page=1'
 
-        headers = {
-            "accept": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmM2I1NGViM2Q0ZTQyODVkZGUxODFmNGVjMzNjM2RmMyIsInN1YiI6IjY1OTAxMDc0NjRmNzE2NjVkNjhlYThiZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DGoyIxj4tfOLEbFjyFNZIUoKSLMPdNJGzyV4FpJtIGY"
-        }
+        headers = tmdbCredential
 
         response = requests.get(url, headers=headers)
 
@@ -293,10 +295,7 @@ def create_userfilm(user_id):
         data = request.get_json()
         id = data['id']
 
-        headers = {
-            "accept": "application/json",
-            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmM2I1NGViM2Q0ZTQyODVkZGUxODFmNGVjMzNjM2RmMyIsInN1YiI6IjY1OTAxMDc0NjRmNzE2NjVkNjhlYThiZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.DGoyIxj4tfOLEbFjyFNZIUoKSLMPdNJGzyV4FpJtIGY"
-        }
+        headers = tmdbCredential
 
         url = "https://api.themoviedb.org/3/movie/" + id +"?language=fr-FR"
         response = requests.get(url, headers=headers)
